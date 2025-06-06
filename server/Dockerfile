@@ -10,8 +10,7 @@ COPY go.sum .
 RUN go mod download
 
 COPY . .
-RUN --mount=type=cache,target=/root/.cache/go-build \
-  go build -o museum cmd/museum/main.go
+RUN go build -o museum cmd/museum/main.go
 
 FROM alpine:3.21
 COPY --from=builder /usr/lib/libsodium.so* /usr/lib
