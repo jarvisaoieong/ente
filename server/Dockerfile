@@ -13,7 +13,7 @@ COPY . .
 RUN go build -o museum cmd/museum/main.go
 
 FROM alpine:3.21
-COPY --from=builder /usr/lib/libsodium.so* /usr/lib
+COPY --from=builder /usr/lib/libsodium.so* /usr/lib/
 COPY --from=builder /etc/ente/museum .
 COPY configurations configurations
 COPY migrations migrations
